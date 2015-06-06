@@ -34,6 +34,7 @@ namespace Pong
 
         public Boolean p2DownPressed { get; set; }
         public Keys Keyp { get; set; }
+        public Boolean waitForEnter { get; set; }
         public Form1()
         {
             String path = Directory.GetCurrentDirectory() + "\\8-BIT WONDER.TTF";
@@ -44,11 +45,11 @@ namespace Pong
 
         Game game { get; set; }
         public Timer t { get; set; }
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.waitForEnter = false;
             this.p1UpPressed = true;
             this.p1DownPressed = true;
             this.p2UpPressed = true;
@@ -65,7 +66,7 @@ namespace Pong
             timer1.Interval = 4500;
             timer1.Start();
             this.gameRunning = false;
-            this.FormBorderStyle = (FormBorderStyle) BorderStyle.Fixed3D;
+            this.FormBorderStyle = (FormBorderStyle)BorderStyle.Fixed3D;
             this.Sound = true;
             Font myFont = new Font(this.font.Families[0], 40, FontStyle.Regular);
             this.settingBackLabel.Font = myFont;
@@ -80,6 +81,7 @@ namespace Pong
             this.settingPlayerOneDownLabel.Font = myFont;
             this.settingPlayerTwoUpLabel.Font = myFont;
             this.settingPlayerTwoDownLabel.Font = myFont;
+            this.winningLabel.Font = myFont;
             this.resumeLabel.Font = myFont;
             this.pauseLabel.Font = myFont;
         }
@@ -116,13 +118,13 @@ namespace Pong
 
         private void onePlayerLabel_Click(object sender, EventArgs e)
         {
-        
+
             this.hideHomeScreen();
             Graphics g = this.CreateGraphics();
             Initialize(g, 1);
             this.gameRunning = true;
             this.game.pauseGame();
-        
+
         }
 
         private void twoPlayerLabel_Click(object sender, EventArgs e)
@@ -132,8 +134,8 @@ namespace Pong
             Initialize(g, 2);
             this.gameRunning = true;
         }
-       
-       
+
+
         private void exitLabel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -152,9 +154,10 @@ namespace Pong
             }
         }
 
-        
 
-        private void showHomeScreen() {
+
+        private void showHomeScreen()
+        {
             onePlayerLabel.Show();
             twoPlayerLabel.Show();
             settingLabel.Show();
@@ -162,15 +165,17 @@ namespace Pong
             hideSettingScreen();
         }
 
-        private void hideHomeScreen() {
+        private void hideHomeScreen()
+        {
             onePlayerLabel.Hide();
             twoPlayerLabel.Hide();
             settingLabel.Hide();
             exitLabel.Hide();
         }
 
-      
-        private void showSettingScreen() {
+
+        private void showSettingScreen()
+        {
             hideHomeScreen();
             settingPlayerOneLabel.Show();
             settingPlayerTwoLabel.Show();
@@ -180,7 +185,7 @@ namespace Pong
             settingPlayerTwoUpLabel.Show();
             settingPlayerTwoDownLabel.Show();
             pauseLabel.Show();
-            settingPlayerOneUpLabel.Text = "UP : "+ this.p1Up.ToString().ToUpper();
+            settingPlayerOneUpLabel.Text = "UP : " + this.p1Up.ToString().ToUpper();
             settingPlayerOneDownLabel.Text = "DOWN : " + this.p1Down.ToString().ToUpper();
             settingPlayerTwoDownLabel.Text = "UP : " + this.p2Up.ToString().ToUpper();
             settingPlayerTwoUpLabel.Text = "DOWN : " + this.p2Down.ToString().ToUpper();
@@ -189,7 +194,8 @@ namespace Pong
             {
                 pictureBox3.Show();
             }
-            else {
+            else
+            {
                 pictureBox4.Show();
             }
 
@@ -229,121 +235,42 @@ namespace Pong
         }
 
 
-        public bool PreFilterMessage(ref Message m)
-        {
-            if (m.Msg == WM_KEYDOWN)
-            {
-                Keys k = (Keys)m.WParam;
-                if (gameRunning)
-                {
-                    if (k == p1Up)
-                    {
-                        this.game.p1UpPressed = true;
-                    }
-                    if (k == p1Down)
-                    {
-                        this.game.p1DownPressed = true;
-                    }
-                    if (k == p2Up)
-                    {
-                        this.game.p2UpPressed = true;
-                    }
-                    if (k == p2Down)
-                    {
-                        this.game.p2DownPressed = true;
-                    }
-                    if (k == Keys.Escape) {
-                        this.showPauseScreen();
-                    }
-
-                }
-            }
-
-            if (m.Msg == WM_KEYUP)
-            {
-                Keys k = (Keys)m.WParam;
-                if (gameRunning)
-                {
-                    if (k == p1Up)
-                    {
-                        this.game.p1UpPressed = false;
-                    }
-                    if (k == p1Down)
-                    {
-                        this.game.p1DownPressed = false;
-                    }
-                    if (k == p2Up)
-                    {
-                        this.game.p2UpPressed = false;
-                    }
-                    if (k == p2Down)
-                    {
-                        this.game.p2DownPressed = false;
-                    }
-                }
-                try
-                {
-                    if (this.game.gamePaused)
-                    {
-                        if (k == Keys.Space)
-                        {
-                            this.game.unPauseGame();
-                        }
-                    }
-                }
-                catch { 
-                    //Nothing to do no game started
-                }
-                if (this.p1UpPressed == false) {
-                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p2Up && k != p2Down) {
-                        Console.WriteLine("Key");
-                        this.p1Up = k;
-                        this.settingPlayerOneUpLabel.Text = "UP : " + k.ToString().ToUpper();
-                        this.p1UpPressed = true;
-                    }
-                }
-                if (this.p1DownPressed == false)
-                {
-                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Up && k != p2Up && k != p2Down)
-                    {
-                        Console.WriteLine("Key");
-                        this.p1Down = k;
-                        this.settingPlayerOneDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
-                        this.p1DownPressed = true;
-                    }
-                }
-                if (this.p2UpPressed == false)
-                {
-                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p1Up && k != p2Down)
-                    {
-                        Console.WriteLine("Key");
-                        this.p2Up = k;
-                        this.settingPlayerTwoUpLabel.Text = "UP : " + k.ToString().ToUpper();
-                        this.p2UpPressed = true;
-                    }
-                }
-                if (this.p2DownPressed == false)
-                {
-                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p2Up && k != p1Up)
-                    {
-                        Console.WriteLine("Key");
-                        this.p2Down = k;
-                        this.settingPlayerTwoDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
-                        this.p2DownPressed = true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        public void Restart()
-        {
-            this.gameRunning = false;
-            this.showHomeScreen();
-        }
-
        
+
+        public void ShowWinningScreen(int winner)
+        {
+
+            moveWinningLabel();
+            this.gameRunning = false;
+            this.winningLabel.Text = String.Format("PLAYER {0} WON \r\n (PRESS ENTER)", winner);
+            this.winningLabel.Show();
+            Timer t_anim = new Timer();
+            t_anim.Interval = 1000;
+            t_anim.Tick += t_anim_Tick;
+            t_anim.Start();
+            this.waitForEnter = true;
+        }
+
+        public void HideWinningScreen() {
+            this.winningLabel.Hide();
+            this.showHomeScreen();
+            this.waitForEnter = false;
+        }
+
+        private void t_anim_Tick(object sender, EventArgs e)
+        {
+            moveWinningLabel();
+        }
+
+        private void moveWinningLabel()
+        {
+            Random rnd = new Random();
+            int x = rnd.Next(0, this.Width - 460);
+            int y = rnd.Next(0, this.Height - 150);
+            this.winningLabel.Location = new Point(x, y);
+        }
+
+
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             this.pictureBox4.Hide();
@@ -403,16 +330,122 @@ namespace Pong
             }
         }
 
-       
 
-       
-      
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == WM_KEYDOWN)
+            {
+                Keys k = (Keys)m.WParam;
+                if (gameRunning)
+                {
+                    if (k == p1Up)
+                    {
+                        this.game.p1UpPressed = true;
+                    }
+                    if (k == p1Down)
+                    {
+                        this.game.p1DownPressed = true;
+                    }
+                    if (k == p2Up)
+                    {
+                        this.game.p2UpPressed = true;
+                    }
+                    if (k == p2Down)
+                    {
+                        this.game.p2DownPressed = true;
+                    }
+                    if (k == Keys.Escape)
+                    {
+                        this.showPauseScreen();
+                    }
 
-        
+                }
+            }
 
-       
+            if (m.Msg == WM_KEYUP)
+            {
+                Keys k = (Keys)m.WParam;
+                if (gameRunning)
+                {
+                    if (k == p1Up)
+                    {
+                        this.game.p1UpPressed = false;
+                    }
+                    if (k == p1Down)
+                    {
+                        this.game.p1DownPressed = false;
+                    }
+                    if (k == p2Up)
+                    {
+                        this.game.p2UpPressed = false;
+                    }
+                    if (k == p2Down)
+                    {
+                        this.game.p2DownPressed = false;
+                    }
+                }
+                try
+                {
+                    if (this.game.gamePaused)
+                    {
+                        if (k == Keys.Space)
+                        {
+                            this.game.unPauseGame();
+                        }
+                    }
+                }
+                catch
+                {
+                    //Nothing to do no game started
+                }
+                if (this.p1UpPressed == false)
+                {
+                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p2Up && k != p2Down && k != Keys.Enter)
+                    {
+                        this.p1Up = k;
+                        this.settingPlayerOneUpLabel.Text = "UP : " + k.ToString().ToUpper();
+                        this.p1UpPressed = true;
+                    }
+                }
+                if (this.p1DownPressed == false)
+                {
+                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Up && k != p2Up && k != p2Down && k != Keys.Enter)
+                    {
+                        this.p1Down = k;
+                        this.settingPlayerOneDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
+                        this.p1DownPressed = true;
+                    }
+                }
+                if (this.p2UpPressed == false)
+                {
+                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p1Up && k != p2Down && k != Keys.Enter)
+                    {
+                        this.p2Up = k;
+                        this.settingPlayerTwoUpLabel.Text = "UP : " + k.ToString().ToUpper();
+                        this.p2UpPressed = true;
+                    }
+                }
+                if (this.p2DownPressed == false)
+                {
+                    if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p2Up && k != p1Up && k != Keys.Enter)
+                    {
+                        this.p2Down = k;
+                        this.settingPlayerTwoDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
+                        this.p2DownPressed = true;
+                    }
+                }
+
+                if (this.waitForEnter) {
+                    if (k == Keys.Enter) {
+                        this.HideWinningScreen();
+                    }
+                }
+            }
+
+            return false;
+        }
 
 
-     
+
     }
 }

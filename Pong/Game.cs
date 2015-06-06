@@ -249,11 +249,21 @@ namespace Pong
                 this.xSpeed = 5;
 
             }
-            if (scoreP1 == pointForWin || scoreP2 == pointForWin)
+            if (scoreP1 == pointForWin)
             {
                 this.gameFinished = true;
                 this.cleanScore();
-                parent.Restart();
+                this.p1.Clean();
+                this.p2.Clean();
+                parent.ShowWinningScreen(1);
+            }
+            else if (scoreP2 == pointForWin)
+            {
+                this.gameFinished = true;
+                this.cleanScore();
+                this.p1.Clean();
+                this.p2.Clean();
+                parent.ShowWinningScreen(2);
             }
             else
             {

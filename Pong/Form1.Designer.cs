@@ -1,4 +1,5 @@
-﻿namespace Pong
+﻿using System.Drawing;
+namespace Pong
 {
     partial class Form1
     {
@@ -47,6 +48,7 @@
             this.settingPlayerTwoDownLabel = new System.Windows.Forms.Label();
             this.resumeLabel = new System.Windows.Forms.Label();
             this.pauseLabel = new System.Windows.Forms.Label();
+            this.winningLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -264,6 +266,21 @@
             this.pauseLabel.Text = "PAUSE  :  ESCAPE";
             this.pauseLabel.Visible = false;
             // 
+            // winningLabel
+            // 
+            this.winningLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.winningLabel.AutoSize = false;
+            this.winningLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.winningLabel.Location = new System.Drawing.Point(449, 275);
+            this.winningLabel.Name = "winningLabel";
+            this.winningLabel.Size = new System.Drawing.Size(107, 13);
+            this.winningLabel.TabIndex = 18;
+            this.winningLabel.Text = "CONGRATULATION";
+            this.winningLabel.Visible = false;
+            this.winningLabel.TextAlign = ContentAlignment.MiddleRight;
+            this.winningLabel.Size = new Size(450,100);
+            
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +288,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(973, 562);
+            this.Controls.Add(this.winningLabel);
             this.Controls.Add(this.pauseLabel);
             this.Controls.Add(this.resumeLabel);
             this.Controls.Add(this.settingPlayerTwoUpLabel);
@@ -320,6 +338,7 @@
         private System.Windows.Forms.Label settingPlayerTwoDownLabel;
         private System.Windows.Forms.Label resumeLabel;
         private System.Windows.Forms.Label pauseLabel;
+        private System.Windows.Forms.Label winningLabel;
     }
 }
 
