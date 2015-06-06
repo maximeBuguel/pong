@@ -41,14 +41,7 @@ namespace Pong
 
         Game game { get; set; }
         public Timer t { get; set; }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.hideHomeScreen();
-            Graphics g = this.CreateGraphics();
-            Initialize(g, 1);
-            this.gameStarted = true;
-            this.game.pauseGame();
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -72,18 +65,18 @@ namespace Pong
             this.FormBorderStyle = (FormBorderStyle) BorderStyle.Fixed3D;
             this.Sound = true;
             Font myFont = new Font(this.font.Families[0], 40, FontStyle.Regular);
-            this.linkLabel5.Font = myFont;
-            this.linkLabel1.Font = myFont;
-            this.linkLabel2.Font = myFont;
-            this.linkLabel3.Font = myFont;
-            this.linkLabel4.Font = myFont;
-            this.label1.Font = myFont;
-            this.label2.Font = myFont;
-            this.label3.Font = myFont;
-            this.label4.Font = myFont;
-            this.label5.Font = myFont;
-            this.label6.Font = myFont;
-            this.label7.Font = myFont;
+            this.settingBackLabel.Font = myFont;
+            this.onePlayerLabel.Font = myFont;
+            this.twoPlayerLabel.Font = myFont;
+            this.exitLabel.Font = myFont;
+            this.settingLabel.Font = myFont;
+            this.settingPlayerOneLabel.Font = myFont;
+            this.settingPlayerTwoLabel.Font = myFont;
+            this.settingEngageLabel.Font = myFont;
+            this.settingPlayerOneUpLabel.Font = myFont;
+            this.settingPlayerOneDownLabel.Font = myFont;
+            this.settingPlayerTwoUpLabel.Font = myFont;
+            this.settingPlayerTwoDownLabel.Font = myFont;
         }
         private void Initialize(Graphics g, int nbPlayer)
         {
@@ -115,64 +108,77 @@ namespace Pong
             }
             //Invalidate();
         }
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void onePlayerLabel_Click(object sender, EventArgs e)
+        {
+        
+            this.hideHomeScreen();
+            Graphics g = this.CreateGraphics();
+            Initialize(g, 1);
+            this.gameStarted = true;
+            this.game.pauseGame();
+        
+        }
+
+        private void twoPlayerLabel_Click(object sender, EventArgs e)
         {
             Graphics g = this.CreateGraphics();
             hideHomeScreen();
             Initialize(g, 2);
             this.gameStarted = true;
         }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+       
+       
+        private void exitLabel_Click(object sender, EventArgs e)
         {
             this.Close();
-            
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void exitLabel_Click_1(object sender, EventArgs e)
         {
             showSettingScreen();
         }
 
-        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void settingBackLabel_Click(object sender, EventArgs e)
         {
             if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
             {
                 showHomeScreen();
             }
-            
         }
 
+        
+
         private void showHomeScreen() {
-            linkLabel1.Show();
-            linkLabel2.Show();
-            linkLabel3.Show();
-            linkLabel4.Show();
+            onePlayerLabel.Show();
+            twoPlayerLabel.Show();
+            exitLabel.Show();
+            settingLabel.Show();
             hideSettingScreen();
         }
 
         private void hideHomeScreen() {
-            linkLabel1.Hide();
-            linkLabel2.Hide();
-            linkLabel3.Hide();
-            linkLabel4.Hide();
+            onePlayerLabel.Hide();
+            twoPlayerLabel.Hide();
+            exitLabel.Hide();
+            settingLabel.Hide();
         }
 
         private void showSettingScreen() {
             hideHomeScreen();
-            label1.Show();
-            label2.Show();
-            label3.Show();
-            label4.Show();
-            label5.Show();
-            label6.Show();
-            label7.Show();
+            settingPlayerOneLabel.Show();
+            settingPlayerTwoLabel.Show();
+            settingEngageLabel.Show();
+            settingPlayerOneUpLabel.Show();
+            settingPlayerOneDownLabel.Show();
+            settingPlayerTwoUpLabel.Show();
+            settingPlayerTwoDownLabel.Show();
 
-            label4.Text = "UP : "+ this.p1Up.ToString();
-            label5.Text = "DOWN : " + this.p1Down.ToString();
-            label7.Text = "UP : " + this.p2Up.ToString();
-            label6.Text = "DOWN : " + this.p2Down.ToString();
-            linkLabel5.Show();
+            settingPlayerOneUpLabel.Text = "UP : "+ this.p1Up.ToString().ToUpper();
+            settingPlayerOneDownLabel.Text = "DOWN : " + this.p1Down.ToString().ToUpper();
+            settingPlayerTwoDownLabel.Text = "UP : " + this.p2Up.ToString().ToUpper();
+            settingPlayerTwoUpLabel.Text = "DOWN : " + this.p2Down.ToString().ToUpper();
+            settingBackLabel.Show();
             if (this.Sound == true)
             {
                 pictureBox3.Show();
@@ -184,14 +190,14 @@ namespace Pong
         }
         private void hideSettingScreen()
         {
-            label1.Hide();
-            label2.Hide();
-            label3.Hide();
-            label4.Hide();
-            label5.Hide();
-            label6.Hide();
-            label7.Hide();
-            linkLabel5.Hide();
+            settingPlayerOneLabel.Hide();
+            settingPlayerTwoLabel.Hide();
+            settingEngageLabel.Hide();
+            settingPlayerOneUpLabel.Hide();
+            settingPlayerOneDownLabel.Hide();
+            settingPlayerTwoUpLabel.Hide();
+            settingPlayerTwoDownLabel.Hide();
+            settingBackLabel.Hide();
             pictureBox3.Hide();
             pictureBox4.Hide();
         }
@@ -264,7 +270,7 @@ namespace Pong
                     if (k != Keys.Space && k != Keys.Escape && k != this.p1Down && k != p2Up && k != p2Down) {
                         Console.WriteLine("Key");
                         this.p1Up = k;
-                        this.label4.Text = "UP : " + k.ToString().ToUpper();
+                        this.settingPlayerOneUpLabel.Text = "UP : " + k.ToString().ToUpper();
                         this.p1UpPressed = true;
                     }
                 }
@@ -274,7 +280,7 @@ namespace Pong
                     {
                         Console.WriteLine("Key");
                         this.p1Down = k;
-                        this.label5.Text = "DOWN : " + k.ToString().ToUpper();
+                        this.settingPlayerOneDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
                         this.p1DownPressed = true;
                     }
                 }
@@ -284,7 +290,7 @@ namespace Pong
                     {
                         Console.WriteLine("Key");
                         this.p2Up = k;
-                        this.label6.Text = "UP : " + k.ToString().ToUpper();
+                        this.settingPlayerTwoUpLabel.Text = "UP : " + k.ToString().ToUpper();
                         this.p2UpPressed = true;
                     }
                 }
@@ -294,7 +300,7 @@ namespace Pong
                     {
                         Console.WriteLine("Key");
                         this.p2Down = k;
-                        this.label7.Text = "DOWN : " + k.ToString().ToUpper();
+                        this.settingPlayerTwoDownLabel.Text = "DOWN : " + k.ToString().ToUpper();
                         this.p2DownPressed = true;
                     }
                 }
@@ -330,7 +336,7 @@ namespace Pong
             if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
             {
                 this.p1UpPressed = false;
-                this.label4.Text = "UP : ???";
+                this.settingPlayerOneUpLabel.Text = "UP : ???";
             }
         }
 
@@ -339,7 +345,7 @@ namespace Pong
             if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
             {
                 this.p1DownPressed = false;
-                this.label5.Text = "DOWN : ???";
+                this.settingPlayerOneDownLabel.Text = "DOWN : ???";
             }
         }
 
@@ -348,7 +354,7 @@ namespace Pong
             if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
             {
                 this.p2UpPressed = false;
-                this.label7.Text = "UP : ???";
+                this.settingPlayerTwoDownLabel.Text = "UP : ???";
             }
         }
 
@@ -357,9 +363,18 @@ namespace Pong
             if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
             {
                 this.p2DownPressed = false;
-                this.label7.Text = "DOWN : ???";
+                this.settingPlayerTwoDownLabel.Text = "DOWN : ???";
             }
         }
+
+       
+
+       
+      
+
+        
+
+       
 
 
      

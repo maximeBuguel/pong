@@ -13,6 +13,7 @@ namespace Pong
 {
     class Game
     {
+        const int iaSensitivity = 0;
         const int pointForWin = 10;
         const int ballSize = 10;
         public int windowSizeX { get; set; }
@@ -124,11 +125,11 @@ namespace Pong
         {
             if (p.isHuman == false)
             {
-                if (ball.Y + ballSize / 2 < p.posY + Player.paddleHeight / 2)
+                if (ball.Y + ballSize / 2 < p.posY + Player.paddleHeight / 2 + iaSensitivity)
                 {
                     p.move(Dirrection.Up);
                 }
-                if (ball.Y + ballSize / 2 > p.posY + Player.paddleHeight / 2)
+                if (ball.Y + ballSize / 2 > p.posY + Player.paddleHeight / 2 + iaSensitivity)
                 {
                     p.move(Dirrection.Down);
                 }

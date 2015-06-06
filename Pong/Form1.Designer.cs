@@ -31,20 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.settingBackLabel = new System.Windows.Forms.Label();
+            this.onePlayerLabel = new System.Windows.Forms.Label();
+            this.twoPlayerLabel = new System.Windows.Forms.Label();
+            this.exitLabel = new System.Windows.Forms.Label();
+            this.settingLabel = new System.Windows.Forms.Label();
+            this.settingPlayerOneLabel = new System.Windows.Forms.Label();
+            this.settingPlayerTwoLabel = new System.Windows.Forms.Label();
+            this.settingEngageLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.settingPlayerOneUpLabel = new System.Windows.Forms.Label();
+            this.settingPlayerOneDownLabel = new System.Windows.Forms.Label();
+            this.settingPlayerTwoUpLabel = new System.Windows.Forms.Label();
+            this.settingPlayerTwoDownLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -53,131 +53,117 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // linkLabel5
+            // settingBackLabel
             // 
-            this.linkLabel5.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.ForeColor = System.Drawing.Color.White;
-            this.linkLabel5.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel5.LinkColor = System.Drawing.Color.White;
-            this.linkLabel5.Location = new System.Drawing.Point(827, 487);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel5.Size = new System.Drawing.Size(35, 13);
-            this.linkLabel5.TabIndex = 6;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "BACK";
-            this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel5.Visible = false;
-            this.linkLabel5.VisitedLinkColor = System.Drawing.Color.White;
-            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
+            this.settingBackLabel.AutoSize = true;
+            this.settingBackLabel.ForeColor = System.Drawing.Color.White;
+            this.settingBackLabel.Location = new System.Drawing.Point(831, 487);
+            this.settingBackLabel.Name = "settingBackLabel";
+            this.settingBackLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.settingBackLabel.Size = new System.Drawing.Size(35, 13);
+            this.settingBackLabel.TabIndex = 6;
+            this.settingBackLabel.TabStop = true;
+            this.settingBackLabel.Text = "BACK";
+            this.settingBackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.settingBackLabel.Visible = false;
+            this.settingBackLabel.Click += new System.EventHandler(this.settingBackLabel_Click);
+            this.settingBackLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
-            // linkLabel1
+            // onePlayerLabel
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.linkLabel1.ForeColor = System.Drawing.Color.White;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(36, 21);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel1.Size = new System.Drawing.Size(75, 13);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "ONE PLAYER";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.White;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.onePlayerLabel.AutoSize = true;
+            this.onePlayerLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.onePlayerLabel.ForeColor = System.Drawing.Color.White;
+            this.onePlayerLabel.Location = new System.Drawing.Point(36, 21);
+            this.onePlayerLabel.Name = "onePlayerLabel";
+            this.onePlayerLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.onePlayerLabel.Size = new System.Drawing.Size(75, 13);
+            this.onePlayerLabel.TabIndex = 0;
+            this.onePlayerLabel.TabStop = true;
+            this.onePlayerLabel.Text = "ONE PLAYER";
+            this.onePlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.onePlayerLabel.Click += new System.EventHandler(this.onePlayerLabel_Click);
+            this.onePlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
-            // linkLabel2
+            // twoPlayerLabel
             // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.CausesValidation = false;
-            this.linkLabel2.ForeColor = System.Drawing.Color.White;
-            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel2.LinkColor = System.Drawing.Color.White;
-            this.linkLabel2.Location = new System.Drawing.Point(36, 78);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel2.Size = new System.Drawing.Size(78, 13);
-            this.linkLabel2.TabIndex = 1;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "TWO PLAYER";
-            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.White;
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.twoPlayerLabel.AutoSize = true;
+            this.twoPlayerLabel.CausesValidation = false;
+            this.twoPlayerLabel.ForeColor = System.Drawing.Color.White;
+            this.twoPlayerLabel.Location = new System.Drawing.Point(36, 81);
+            this.twoPlayerLabel.Name = "twoPlayerLabel";
+            this.twoPlayerLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.twoPlayerLabel.Size = new System.Drawing.Size(78, 13);
+            this.twoPlayerLabel.TabIndex = 1;
+            this.twoPlayerLabel.TabStop = true;
+            this.twoPlayerLabel.Text = "TWO PLAYER";
+            this.twoPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.twoPlayerLabel.Click += new System.EventHandler(this.twoPlayerLabel_Click);
+            this.twoPlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
-            // linkLabel3
+            // exitLabel
             // 
-            this.linkLabel3.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.ForeColor = System.Drawing.Color.White;
-            this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel3.LinkColor = System.Drawing.Color.White;
-            this.linkLabel3.Location = new System.Drawing.Point(831, 487);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel3.Size = new System.Drawing.Size(31, 13);
-            this.linkLabel3.TabIndex = 2;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "EXIT";
-            this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel3.VisitedLinkColor = System.Drawing.Color.White;
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.exitLabel.AutoSize = true;
+            this.exitLabel.ForeColor = System.Drawing.Color.White;
+            this.exitLabel.Location = new System.Drawing.Point(36, 138);
+            this.exitLabel.Name = "exitLabel";
+            this.exitLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.exitLabel.Size = new System.Drawing.Size(54, 13);
+            this.exitLabel.TabIndex = 2;
+            this.exitLabel.TabStop = true;
+            this.exitLabel.Text = "SETTING";
+            this.exitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click_1);
+            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
-            // linkLabel4
+            // settingLabel
             // 
-            this.linkLabel4.ActiveLinkColor = System.Drawing.Color.White;
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.ForeColor = System.Drawing.Color.White;
-            this.linkLabel4.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linkLabel4.LinkColor = System.Drawing.Color.White;
-            this.linkLabel4.Location = new System.Drawing.Point(36, 138);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel4.Size = new System.Drawing.Size(54, 13);
-            this.linkLabel4.TabIndex = 3;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "SETTING";
-            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel4.VisitedLinkColor = System.Drawing.Color.White;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.settingLabel.AutoSize = true;
+            this.settingLabel.ForeColor = System.Drawing.Color.White;
+            this.settingLabel.Location = new System.Drawing.Point(831, 487);
+            this.settingLabel.Name = "settingLabel";
+            this.settingLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.settingLabel.Size = new System.Drawing.Size(31, 13);
+            this.settingLabel.TabIndex = 3;
+            this.settingLabel.TabStop = true;
+            this.settingLabel.Text = "EXIT";
+            this.settingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.settingLabel.Click += new System.EventHandler(this.exitLabel_Click);
+
+            this.settingLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
-            // label1
+            // settingPlayerOneLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label1.Location = new System.Drawing.Point(36, 108);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "PLAYER ONE";
-            this.label1.Visible = false;
+            this.settingPlayerOneLabel.AutoSize = true;
+            this.settingPlayerOneLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.settingPlayerOneLabel.Location = new System.Drawing.Point(36, 108);
+            this.settingPlayerOneLabel.Name = "settingPlayerOneLabel";
+            this.settingPlayerOneLabel.Size = new System.Drawing.Size(75, 13);
+            this.settingPlayerOneLabel.TabIndex = 4;
+            this.settingPlayerOneLabel.Text = "PLAYER ONE";
+            this.settingPlayerOneLabel.Visible = false;
             // 
-            // label2
+            // settingPlayerTwoLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label2.Location = new System.Drawing.Point(36, 326);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "PLAYER TWO";
-            this.label2.Visible = false;
+            this.settingPlayerTwoLabel.AutoSize = true;
+            this.settingPlayerTwoLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.settingPlayerTwoLabel.Location = new System.Drawing.Point(36, 326);
+            this.settingPlayerTwoLabel.Name = "settingPlayerTwoLabel";
+            this.settingPlayerTwoLabel.Size = new System.Drawing.Size(78, 13);
+            this.settingPlayerTwoLabel.TabIndex = 5;
+            this.settingPlayerTwoLabel.Text = "PLAYER TWO";
+            this.settingPlayerTwoLabel.Visible = false;
             // 
-            // label3
+            // settingEngageLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label3.Location = new System.Drawing.Point(36, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "ENGAGE : SPACE";
-            this.label3.Visible = false;
+            this.settingEngageLabel.AutoSize = true;
+            this.settingEngageLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.settingEngageLabel.Location = new System.Drawing.Point(36, 21);
+            this.settingEngageLabel.Name = "settingEngageLabel";
+            this.settingEngageLabel.Size = new System.Drawing.Size(96, 13);
+            this.settingEngageLabel.TabIndex = 9;
+            this.settingEngageLabel.Text = "ENGAGE : SPACE";
+            this.settingEngageLabel.Visible = false;
             // 
             // pictureBox3
             // 
@@ -203,53 +189,53 @@
             this.pictureBox4.Visible = false;
             this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // label4
+            // settingPlayerOneUpLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Location = new System.Drawing.Point(83, 173);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "UP :";
-            this.label4.Visible = false;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.settingPlayerOneUpLabel.AutoSize = true;
+            this.settingPlayerOneUpLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingPlayerOneUpLabel.Location = new System.Drawing.Point(83, 173);
+            this.settingPlayerOneUpLabel.Name = "settingPlayerOneUpLabel";
+            this.settingPlayerOneUpLabel.Size = new System.Drawing.Size(28, 13);
+            this.settingPlayerOneUpLabel.TabIndex = 12;
+            this.settingPlayerOneUpLabel.Text = "UP :";
+            this.settingPlayerOneUpLabel.Visible = false;
+            this.settingPlayerOneUpLabel.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label5
+            // settingPlayerOneDownLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.Location = new System.Drawing.Point(83, 241);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "DOWN :";
-            this.label5.Visible = false;
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.settingPlayerOneDownLabel.AutoSize = true;
+            this.settingPlayerOneDownLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingPlayerOneDownLabel.Location = new System.Drawing.Point(83, 241);
+            this.settingPlayerOneDownLabel.Name = "settingPlayerOneDownLabel";
+            this.settingPlayerOneDownLabel.Size = new System.Drawing.Size(48, 13);
+            this.settingPlayerOneDownLabel.TabIndex = 13;
+            this.settingPlayerOneDownLabel.Text = "DOWN :";
+            this.settingPlayerOneDownLabel.Visible = false;
+            this.settingPlayerOneDownLabel.Click += new System.EventHandler(this.label5_Click);
             // 
-            // label6
+            // settingPlayerTwoUpLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.Location = new System.Drawing.Point(83, 448);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "DOWN :";
-            this.label6.Visible = false;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.settingPlayerTwoUpLabel.AutoSize = true;
+            this.settingPlayerTwoUpLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingPlayerTwoUpLabel.Location = new System.Drawing.Point(83, 448);
+            this.settingPlayerTwoUpLabel.Name = "settingPlayerTwoUpLabel";
+            this.settingPlayerTwoUpLabel.Size = new System.Drawing.Size(48, 13);
+            this.settingPlayerTwoUpLabel.TabIndex = 15;
+            this.settingPlayerTwoUpLabel.Text = "DOWN :";
+            this.settingPlayerTwoUpLabel.Visible = false;
+            this.settingPlayerTwoUpLabel.Click += new System.EventHandler(this.label6_Click);
             // 
-            // label7
+            // settingPlayerTwoDownLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label7.Location = new System.Drawing.Point(83, 377);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "UP :";
-            this.label7.Visible = false;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.settingPlayerTwoDownLabel.AutoSize = true;
+            this.settingPlayerTwoDownLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingPlayerTwoDownLabel.Location = new System.Drawing.Point(83, 377);
+            this.settingPlayerTwoDownLabel.Name = "settingPlayerTwoDownLabel";
+            this.settingPlayerTwoDownLabel.Size = new System.Drawing.Size(28, 13);
+            this.settingPlayerTwoDownLabel.TabIndex = 14;
+            this.settingPlayerTwoDownLabel.Text = "UP :";
+            this.settingPlayerTwoDownLabel.Visible = false;
+            this.settingPlayerTwoDownLabel.Click += new System.EventHandler(this.label7_Click);
             // 
             // Form1
             // 
@@ -258,20 +244,20 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(973, 562);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.settingPlayerTwoUpLabel);
+            this.Controls.Add(this.settingPlayerTwoDownLabel);
+            this.Controls.Add(this.settingPlayerOneDownLabel);
+            this.Controls.Add(this.settingPlayerOneUpLabel);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.linkLabel5);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.linkLabel4);
-            this.Controls.Add(this.linkLabel3);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.settingEngageLabel);
+            this.Controls.Add(this.settingBackLabel);
+            this.Controls.Add(this.settingPlayerTwoLabel);
+            this.Controls.Add(this.settingPlayerOneLabel);
+            this.Controls.Add(this.settingLabel);
+            this.Controls.Add(this.exitLabel);
+            this.Controls.Add(this.twoPlayerLabel);
+            this.Controls.Add(this.onePlayerLabel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -289,20 +275,20 @@
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.LinkLabel linkLabel5;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label settingBackLabel;
+        private System.Windows.Forms.Label onePlayerLabel;
+        private System.Windows.Forms.Label twoPlayerLabel;
+        private System.Windows.Forms.Label exitLabel;
+        private System.Windows.Forms.Label settingLabel;
+        private System.Windows.Forms.Label settingPlayerOneLabel;
+        private System.Windows.Forms.Label settingPlayerTwoLabel;
+        private System.Windows.Forms.Label settingEngageLabel;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label settingPlayerOneUpLabel;
+        private System.Windows.Forms.Label settingPlayerOneDownLabel;
+        private System.Windows.Forms.Label settingPlayerTwoUpLabel;
+        private System.Windows.Forms.Label settingPlayerTwoDownLabel;
     }
 }
 
