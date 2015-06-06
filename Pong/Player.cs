@@ -10,7 +10,7 @@ namespace Pong
 {
     class Player
     {
-        const int speed = 10;
+        const int speed = 15;
         public const int paddleWidth = 20;
         public const int paddleHeight = 80;
         public int windowSizeX { get; set; }

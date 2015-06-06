@@ -262,6 +262,10 @@ namespace Pong
                 this.ballPosition = new Point(windowSizeX / 2 - ballSize / 2, windowSizeY / 2 - ballSize / 2);
                 this.p1.ResetPos();
                 this.p2.ResetPos();
+                this.p1UpPressed = false;
+                this.p1DownPressed = false;
+                this.p2UpPressed = false;
+                this.p2DownPressed = false;
                 this.pauseGame();
             }
         }
