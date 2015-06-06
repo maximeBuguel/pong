@@ -273,14 +273,14 @@ namespace Pong
 
         public void pauseGame() {
             this.gamePaused = true;
-            this.parent.gameStarted = false;
+            this.parent.gameRunning = false;
 
         }
 
         public void unPauseGame()
         {
             this.gamePaused = false;
-            this.parent.gameStarted = true;
+            this.parent.gameRunning = true;
         }
 
         public void cleanBall()

@@ -34,8 +34,8 @@
             this.settingBackLabel = new System.Windows.Forms.Label();
             this.onePlayerLabel = new System.Windows.Forms.Label();
             this.twoPlayerLabel = new System.Windows.Forms.Label();
-            this.exitLabel = new System.Windows.Forms.Label();
             this.settingLabel = new System.Windows.Forms.Label();
+            this.exitLabel = new System.Windows.Forms.Label();
             this.settingPlayerOneLabel = new System.Windows.Forms.Label();
             this.settingPlayerTwoLabel = new System.Windows.Forms.Label();
             this.settingEngageLabel = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.settingPlayerOneDownLabel = new System.Windows.Forms.Label();
             this.settingPlayerTwoUpLabel = new System.Windows.Forms.Label();
             this.settingPlayerTwoDownLabel = new System.Windows.Forms.Label();
+            this.resumeLabel = new System.Windows.Forms.Label();
+            this.pauseLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +58,7 @@
             // settingBackLabel
             // 
             this.settingBackLabel.AutoSize = true;
+            this.settingBackLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingBackLabel.ForeColor = System.Drawing.Color.White;
             this.settingBackLabel.Location = new System.Drawing.Point(831, 487);
             this.settingBackLabel.Name = "settingBackLabel";
@@ -67,12 +70,11 @@
             this.settingBackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.settingBackLabel.Visible = false;
             this.settingBackLabel.Click += new System.EventHandler(this.settingBackLabel_Click);
-            this.settingBackLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
             // onePlayerLabel
             // 
             this.onePlayerLabel.AutoSize = true;
-            this.onePlayerLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.onePlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.onePlayerLabel.ForeColor = System.Drawing.Color.White;
             this.onePlayerLabel.Location = new System.Drawing.Point(36, 21);
             this.onePlayerLabel.Name = "onePlayerLabel";
@@ -83,12 +85,12 @@
             this.onePlayerLabel.Text = "ONE PLAYER";
             this.onePlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.onePlayerLabel.Click += new System.EventHandler(this.onePlayerLabel_Click);
-            this.onePlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
             // twoPlayerLabel
             // 
             this.twoPlayerLabel.AutoSize = true;
             this.twoPlayerLabel.CausesValidation = false;
+            this.twoPlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.twoPlayerLabel.ForeColor = System.Drawing.Color.White;
             this.twoPlayerLabel.Location = new System.Drawing.Point(36, 81);
             this.twoPlayerLabel.Name = "twoPlayerLabel";
@@ -99,44 +101,42 @@
             this.twoPlayerLabel.Text = "TWO PLAYER";
             this.twoPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.twoPlayerLabel.Click += new System.EventHandler(this.twoPlayerLabel_Click);
-            this.twoPlayerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            // 
-            // exitLabel
-            // 
-            this.exitLabel.AutoSize = true;
-            this.exitLabel.ForeColor = System.Drawing.Color.White;
-            this.exitLabel.Location = new System.Drawing.Point(36, 138);
-            this.exitLabel.Name = "exitLabel";
-            this.exitLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.exitLabel.Size = new System.Drawing.Size(54, 13);
-            this.exitLabel.TabIndex = 2;
-            this.exitLabel.TabStop = true;
-            this.exitLabel.Text = "SETTING";
-            this.exitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click_1);
-            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             // 
             // settingLabel
             // 
             this.settingLabel.AutoSize = true;
+            this.settingLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingLabel.ForeColor = System.Drawing.Color.White;
-            this.settingLabel.Location = new System.Drawing.Point(831, 487);
+            this.settingLabel.Location = new System.Drawing.Point(36, 138);
             this.settingLabel.Name = "settingLabel";
             this.settingLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.settingLabel.Size = new System.Drawing.Size(31, 13);
-            this.settingLabel.TabIndex = 3;
+            this.settingLabel.Size = new System.Drawing.Size(54, 13);
+            this.settingLabel.TabIndex = 2;
             this.settingLabel.TabStop = true;
-            this.settingLabel.Text = "EXIT";
+            this.settingLabel.Text = "SETTING";
             this.settingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.settingLabel.Click += new System.EventHandler(this.exitLabel_Click);
-
-            this.settingLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingLabel.Click += new System.EventHandler(this.exitLabel_Click_1);
+            // 
+            // exitLabel
+            // 
+            this.exitLabel.AutoSize = true;
+            this.exitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.exitLabel.ForeColor = System.Drawing.Color.White;
+            this.exitLabel.Location = new System.Drawing.Point(831, 487);
+            this.exitLabel.Name = "exitLabel";
+            this.exitLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.exitLabel.Size = new System.Drawing.Size(31, 13);
+            this.exitLabel.TabIndex = 3;
+            this.exitLabel.TabStop = true;
+            this.exitLabel.Text = "EXIT";
+            this.exitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.exitLabel.Click += new System.EventHandler(this.exitLabel_Click);
             // 
             // settingPlayerOneLabel
             // 
             this.settingPlayerOneLabel.AutoSize = true;
             this.settingPlayerOneLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.settingPlayerOneLabel.Location = new System.Drawing.Point(36, 108);
+            this.settingPlayerOneLabel.Location = new System.Drawing.Point(36, 151);
             this.settingPlayerOneLabel.Name = "settingPlayerOneLabel";
             this.settingPlayerOneLabel.Size = new System.Drawing.Size(75, 13);
             this.settingPlayerOneLabel.TabIndex = 4;
@@ -147,7 +147,7 @@
             // 
             this.settingPlayerTwoLabel.AutoSize = true;
             this.settingPlayerTwoLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.settingPlayerTwoLabel.Location = new System.Drawing.Point(36, 326);
+            this.settingPlayerTwoLabel.Location = new System.Drawing.Point(36, 335);
             this.settingPlayerTwoLabel.Name = "settingPlayerTwoLabel";
             this.settingPlayerTwoLabel.Size = new System.Drawing.Size(78, 13);
             this.settingPlayerTwoLabel.TabIndex = 5;
@@ -193,7 +193,7 @@
             // 
             this.settingPlayerOneUpLabel.AutoSize = true;
             this.settingPlayerOneUpLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerOneUpLabel.Location = new System.Drawing.Point(83, 173);
+            this.settingPlayerOneUpLabel.Location = new System.Drawing.Point(83, 202);
             this.settingPlayerOneUpLabel.Name = "settingPlayerOneUpLabel";
             this.settingPlayerOneUpLabel.Size = new System.Drawing.Size(28, 13);
             this.settingPlayerOneUpLabel.TabIndex = 12;
@@ -205,7 +205,7 @@
             // 
             this.settingPlayerOneDownLabel.AutoSize = true;
             this.settingPlayerOneDownLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerOneDownLabel.Location = new System.Drawing.Point(83, 241);
+            this.settingPlayerOneDownLabel.Location = new System.Drawing.Point(83, 247);
             this.settingPlayerOneDownLabel.Name = "settingPlayerOneDownLabel";
             this.settingPlayerOneDownLabel.Size = new System.Drawing.Size(48, 13);
             this.settingPlayerOneDownLabel.TabIndex = 13;
@@ -217,7 +217,7 @@
             // 
             this.settingPlayerTwoUpLabel.AutoSize = true;
             this.settingPlayerTwoUpLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerTwoUpLabel.Location = new System.Drawing.Point(83, 448);
+            this.settingPlayerTwoUpLabel.Location = new System.Drawing.Point(83, 431);
             this.settingPlayerTwoUpLabel.Name = "settingPlayerTwoUpLabel";
             this.settingPlayerTwoUpLabel.Size = new System.Drawing.Size(48, 13);
             this.settingPlayerTwoUpLabel.TabIndex = 15;
@@ -229,13 +229,40 @@
             // 
             this.settingPlayerTwoDownLabel.AutoSize = true;
             this.settingPlayerTwoDownLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerTwoDownLabel.Location = new System.Drawing.Point(83, 377);
+            this.settingPlayerTwoDownLabel.Location = new System.Drawing.Point(83, 388);
             this.settingPlayerTwoDownLabel.Name = "settingPlayerTwoDownLabel";
             this.settingPlayerTwoDownLabel.Size = new System.Drawing.Size(28, 13);
             this.settingPlayerTwoDownLabel.TabIndex = 14;
             this.settingPlayerTwoDownLabel.Text = "UP :";
             this.settingPlayerTwoDownLabel.Visible = false;
             this.settingPlayerTwoDownLabel.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // resumeLabel
+            // 
+            this.resumeLabel.AutoSize = true;
+            this.resumeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.resumeLabel.ForeColor = System.Drawing.Color.White;
+            this.resumeLabel.Location = new System.Drawing.Point(831, 448);
+            this.resumeLabel.Name = "resumeLabel";
+            this.resumeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.resumeLabel.Size = new System.Drawing.Size(35, 13);
+            this.resumeLabel.TabIndex = 16;
+            this.resumeLabel.TabStop = true;
+            this.resumeLabel.Text = "BACK";
+            this.resumeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resumeLabel.Visible = false;
+            this.resumeLabel.Click += new System.EventHandler(this.resumeLabel_Click);
+            // 
+            // pauseLabel
+            // 
+            this.pauseLabel.AutoSize = true;
+            this.pauseLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pauseLabel.Location = new System.Drawing.Point(36, 68);
+            this.pauseLabel.Name = "pauseLabel";
+            this.pauseLabel.Size = new System.Drawing.Size(100, 13);
+            this.pauseLabel.TabIndex = 17;
+            this.pauseLabel.Text = "PAUSE  :  ESCAPE";
+            this.pauseLabel.Visible = false;
             // 
             // Form1
             // 
@@ -244,6 +271,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(973, 562);
+            this.Controls.Add(this.pauseLabel);
+            this.Controls.Add(this.resumeLabel);
             this.Controls.Add(this.settingPlayerTwoUpLabel);
             this.Controls.Add(this.settingPlayerTwoDownLabel);
             this.Controls.Add(this.settingPlayerOneDownLabel);
@@ -254,8 +283,8 @@
             this.Controls.Add(this.settingBackLabel);
             this.Controls.Add(this.settingPlayerTwoLabel);
             this.Controls.Add(this.settingPlayerOneLabel);
-            this.Controls.Add(this.settingLabel);
             this.Controls.Add(this.exitLabel);
+            this.Controls.Add(this.settingLabel);
             this.Controls.Add(this.twoPlayerLabel);
             this.Controls.Add(this.onePlayerLabel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -278,8 +307,8 @@
         private System.Windows.Forms.Label settingBackLabel;
         private System.Windows.Forms.Label onePlayerLabel;
         private System.Windows.Forms.Label twoPlayerLabel;
-        private System.Windows.Forms.Label exitLabel;
         private System.Windows.Forms.Label settingLabel;
+        private System.Windows.Forms.Label exitLabel;
         private System.Windows.Forms.Label settingPlayerOneLabel;
         private System.Windows.Forms.Label settingPlayerTwoLabel;
         private System.Windows.Forms.Label settingEngageLabel;
@@ -289,6 +318,8 @@
         private System.Windows.Forms.Label settingPlayerOneDownLabel;
         private System.Windows.Forms.Label settingPlayerTwoUpLabel;
         private System.Windows.Forms.Label settingPlayerTwoDownLabel;
+        private System.Windows.Forms.Label resumeLabel;
+        private System.Windows.Forms.Label pauseLabel;
     }
 }
 

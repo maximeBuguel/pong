@@ -15,12 +15,15 @@ namespace Pong
 
     public partial class Form1 : Form, IMessageFilter
     {
+
+        private const int WM_KEYDOWN = 0x0100;
+        private const int WM_KEYUP = 0x0101;
         const int refreshTime = 16;
         public Keys p1Up { get; set; }
         public Keys p1Down { get; set; }
         public Keys p2Up { get; set; }
         public Keys p2Down { get; set; }
-        public Boolean gameStarted { get; set; }
+        public Boolean gameRunning { get; set; }
         public Boolean Sound { get; set; }
         public PrivateFontCollection font { get; set; }
         public Boolean p1UpPressed { get; set; }
@@ -61,15 +64,15 @@ namespace Pong
             this.t.Start();
             timer1.Interval = 4500;
             timer1.Start();
-            this.gameStarted = false;
+            this.gameRunning = false;
             this.FormBorderStyle = (FormBorderStyle) BorderStyle.Fixed3D;
             this.Sound = true;
             Font myFont = new Font(this.font.Families[0], 40, FontStyle.Regular);
             this.settingBackLabel.Font = myFont;
             this.onePlayerLabel.Font = myFont;
             this.twoPlayerLabel.Font = myFont;
-            this.exitLabel.Font = myFont;
             this.settingLabel.Font = myFont;
+            this.exitLabel.Font = myFont;
             this.settingPlayerOneLabel.Font = myFont;
             this.settingPlayerTwoLabel.Font = myFont;
             this.settingEngageLabel.Font = myFont;
@@ -77,6 +80,8 @@ namespace Pong
             this.settingPlayerOneDownLabel.Font = myFont;
             this.settingPlayerTwoUpLabel.Font = myFont;
             this.settingPlayerTwoDownLabel.Font = myFont;
+            this.resumeLabel.Font = myFont;
+            this.pauseLabel.Font = myFont;
         }
         private void Initialize(Graphics g, int nbPlayer)
         {
@@ -88,7 +93,7 @@ namespace Pong
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (gameStarted)
+            if (gameRunning)
             {
                 this.game.incSpeed();
             }
@@ -102,7 +107,7 @@ namespace Pong
 
         private void t_Tick(object sender, EventArgs e)
         {
-            if (this.gameStarted)
+            if (this.gameRunning)
             {
                 this.game.Update();
             }
@@ -115,7 +120,7 @@ namespace Pong
             this.hideHomeScreen();
             Graphics g = this.CreateGraphics();
             Initialize(g, 1);
-            this.gameStarted = true;
+            this.gameRunning = true;
             this.game.pauseGame();
         
         }
@@ -125,7 +130,7 @@ namespace Pong
             Graphics g = this.CreateGraphics();
             hideHomeScreen();
             Initialize(g, 2);
-            this.gameStarted = true;
+            this.gameRunning = true;
         }
        
        
@@ -152,18 +157,19 @@ namespace Pong
         private void showHomeScreen() {
             onePlayerLabel.Show();
             twoPlayerLabel.Show();
-            exitLabel.Show();
             settingLabel.Show();
+            exitLabel.Show();
             hideSettingScreen();
         }
 
         private void hideHomeScreen() {
             onePlayerLabel.Hide();
             twoPlayerLabel.Hide();
-            exitLabel.Hide();
             settingLabel.Hide();
+            exitLabel.Hide();
         }
 
+      
         private void showSettingScreen() {
             hideHomeScreen();
             settingPlayerOneLabel.Show();
@@ -173,7 +179,7 @@ namespace Pong
             settingPlayerOneDownLabel.Show();
             settingPlayerTwoUpLabel.Show();
             settingPlayerTwoDownLabel.Show();
-
+            pauseLabel.Show();
             settingPlayerOneUpLabel.Text = "UP : "+ this.p1Up.ToString().ToUpper();
             settingPlayerOneDownLabel.Text = "DOWN : " + this.p1Down.ToString().ToUpper();
             settingPlayerTwoDownLabel.Text = "UP : " + this.p2Up.ToString().ToUpper();
@@ -190,6 +196,7 @@ namespace Pong
         }
         private void hideSettingScreen()
         {
+            pauseLabel.Hide();
             settingPlayerOneLabel.Hide();
             settingPlayerTwoLabel.Hide();
             settingEngageLabel.Hide();
@@ -202,15 +209,32 @@ namespace Pong
             pictureBox4.Hide();
         }
 
-        private const int WM_KEYDOWN = 0x0100;
-        private const int WM_KEYUP = 0x0101;
+        private void showPauseScreen()
+        {
+            this.game.cleanScore();
+            this.resumeLabel.Show();
+            this.gameRunning = false;
+            this.showSettingScreen();
+            this.settingBackLabel.Hide();
+            this.exitLabel.Show();
+
+        }
+
+        private void hidePauseScreen()
+        {
+            this.gameRunning = true;
+            this.resumeLabel.Hide();
+            this.hideSettingScreen();
+            this.exitLabel.Hide();
+        }
+
 
         public bool PreFilterMessage(ref Message m)
         {
             if (m.Msg == WM_KEYDOWN)
             {
                 Keys k = (Keys)m.WParam;
-                if (gameStarted)
+                if (gameRunning)
                 {
                     if (k == p1Up)
                     {
@@ -228,13 +252,17 @@ namespace Pong
                     {
                         this.game.p2DownPressed = true;
                     }
+                    if (k == Keys.Escape) {
+                        this.showPauseScreen();
+                    }
+
                 }
             }
 
             if (m.Msg == WM_KEYUP)
             {
                 Keys k = (Keys)m.WParam;
-                if (gameStarted)
+                if (gameRunning)
                 {
                     if (k == p1Up)
                     {
@@ -311,7 +339,7 @@ namespace Pong
 
         public void Restart()
         {
-            this.gameStarted = false;
+            this.gameRunning = false;
             this.showHomeScreen();
         }
 
@@ -364,6 +392,14 @@ namespace Pong
             {
                 this.p2DownPressed = false;
                 this.settingPlayerTwoDownLabel.Text = "DOWN : ???";
+            }
+        }
+
+        private void resumeLabel_Click(object sender, EventArgs e)
+        {
+            if (this.p1DownPressed == true && this.p1UpPressed == true && this.p2UpPressed == true && this.p2DownPressed == true)
+            {
+                this.hidePauseScreen();
             }
         }
 
