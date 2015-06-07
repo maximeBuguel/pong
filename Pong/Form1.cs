@@ -45,7 +45,7 @@ namespace Pong
             InitializeComponent();
         }
 
-        
+
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -236,7 +236,7 @@ namespace Pong
         }
 
 
-       
+
 
         public void ShowWinningScreen(int winner)
         {
@@ -252,7 +252,8 @@ namespace Pong
             this.WaitForEnter = true;
         }
 
-        public void HideWinningScreen() {
+        public void HideWinningScreen()
+        {
             this.winningLabel.Hide();
             this.ShowHomeScreen();
             this.WaitForEnter = false;
@@ -436,8 +437,10 @@ namespace Pong
                     }
                 }
 
-                if (this.WaitForEnter) {
-                    if (k == Keys.Enter) {
+                if (this.WaitForEnter)
+                {
+                    if (k == Keys.Enter)
+                    {
                         this.HideWinningScreen();
                     }
                 }

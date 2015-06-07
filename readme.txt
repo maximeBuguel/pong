@@ -1,0 +1,1 @@
+Pour partager ce jeu, il suffis de partager l'executable (.exe) ainsi que le dossier Resources afin de profiter de la police 8BIT
