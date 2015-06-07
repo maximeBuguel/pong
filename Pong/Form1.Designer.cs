@@ -40,8 +40,8 @@ namespace Pong
             this.settingPlayerOneLabel = new System.Windows.Forms.Label();
             this.settingPlayerTwoLabel = new System.Windows.Forms.Label();
             this.settingEngageLabel = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.soundPictureBox = new System.Windows.Forms.PictureBox();
+            this.soundMutePictureBox = new System.Windows.Forms.PictureBox();
             this.settingPlayerOneUpLabel = new System.Windows.Forms.Label();
             this.settingPlayerOneDownLabel = new System.Windows.Forms.Label();
             this.settingPlayerTwoUpLabel = new System.Windows.Forms.Label();
@@ -49,8 +49,8 @@ namespace Pong
             this.resumeLabel = new System.Windows.Forms.Label();
             this.pauseLabel = new System.Windows.Forms.Label();
             this.winningLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundMutePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -167,29 +167,29 @@ namespace Pong
             this.settingEngageLabel.Text = "ENGAGE : SPACE";
             this.settingEngageLabel.Visible = false;
             // 
-            // pictureBox3
+            // soundPictureBox
             // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(852, 21);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(109, 100);
-            this.pictureBox3.TabIndex = 10;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.soundPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.soundPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("soundPictureBox.Image")));
+            this.soundPictureBox.Location = new System.Drawing.Point(852, 21);
+            this.soundPictureBox.Name = "soundPictureBox";
+            this.soundPictureBox.Size = new System.Drawing.Size(109, 100);
+            this.soundPictureBox.TabIndex = 10;
+            this.soundPictureBox.TabStop = false;
+            this.soundPictureBox.Visible = false;
+            this.soundPictureBox.Click += new System.EventHandler(this.soundPictureBox_Click);
             // 
-            // pictureBox4
+            // soundMutePictureBox
             // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(852, 21);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(109, 100);
-            this.pictureBox4.TabIndex = 11;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Visible = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.soundMutePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.soundMutePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("soundMutePictureBox.Image")));
+            this.soundMutePictureBox.Location = new System.Drawing.Point(852, 21);
+            this.soundMutePictureBox.Name = "soundMutePictureBox";
+            this.soundMutePictureBox.Size = new System.Drawing.Size(109, 100);
+            this.soundMutePictureBox.TabIndex = 11;
+            this.soundMutePictureBox.TabStop = false;
+            this.soundMutePictureBox.Visible = false;
+            this.soundMutePictureBox.Click += new System.EventHandler(this.soundMutePictureBox_Click);
             // 
             // settingPlayerOneUpLabel
             // 
@@ -201,7 +201,7 @@ namespace Pong
             this.settingPlayerOneUpLabel.TabIndex = 12;
             this.settingPlayerOneUpLabel.Text = "UP :";
             this.settingPlayerOneUpLabel.Visible = false;
-            this.settingPlayerOneUpLabel.Click += new System.EventHandler(this.label4_Click);
+            this.settingPlayerOneUpLabel.Click += new System.EventHandler(this.settingPlayerOneUpLabel_Click);
             // 
             // settingPlayerOneDownLabel
             // 
@@ -213,31 +213,31 @@ namespace Pong
             this.settingPlayerOneDownLabel.TabIndex = 13;
             this.settingPlayerOneDownLabel.Text = "DOWN :";
             this.settingPlayerOneDownLabel.Visible = false;
-            this.settingPlayerOneDownLabel.Click += new System.EventHandler(this.label5_Click);
+            this.settingPlayerOneDownLabel.Click += new System.EventHandler(this.settingPlayerOneDownLabel_Click);
             // 
             // settingPlayerTwoUpLabel
             // 
             this.settingPlayerTwoUpLabel.AutoSize = true;
             this.settingPlayerTwoUpLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerTwoUpLabel.Location = new System.Drawing.Point(83, 431);
+            this.settingPlayerTwoUpLabel.Location = new System.Drawing.Point(83, 399);
             this.settingPlayerTwoUpLabel.Name = "settingPlayerTwoUpLabel";
-            this.settingPlayerTwoUpLabel.Size = new System.Drawing.Size(48, 13);
+            this.settingPlayerTwoUpLabel.Size = new System.Drawing.Size(28, 13);
             this.settingPlayerTwoUpLabel.TabIndex = 15;
-            this.settingPlayerTwoUpLabel.Text = "DOWN :";
+            this.settingPlayerTwoUpLabel.Text = "UP :";
             this.settingPlayerTwoUpLabel.Visible = false;
-            this.settingPlayerTwoUpLabel.Click += new System.EventHandler(this.label6_Click);
+            this.settingPlayerTwoUpLabel.Click += new System.EventHandler(this.settingPlayerTwoUpLabel_Click);
             // 
             // settingPlayerTwoDownLabel
             // 
             this.settingPlayerTwoDownLabel.AutoSize = true;
             this.settingPlayerTwoDownLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.settingPlayerTwoDownLabel.Location = new System.Drawing.Point(83, 388);
+            this.settingPlayerTwoDownLabel.Location = new System.Drawing.Point(83, 448);
             this.settingPlayerTwoDownLabel.Name = "settingPlayerTwoDownLabel";
-            this.settingPlayerTwoDownLabel.Size = new System.Drawing.Size(28, 13);
+            this.settingPlayerTwoDownLabel.Size = new System.Drawing.Size(48, 13);
             this.settingPlayerTwoDownLabel.TabIndex = 14;
-            this.settingPlayerTwoDownLabel.Text = "UP :";
+            this.settingPlayerTwoDownLabel.Text = "DOWN :";
             this.settingPlayerTwoDownLabel.Visible = false;
-            this.settingPlayerTwoDownLabel.Click += new System.EventHandler(this.label7_Click);
+            this.settingPlayerTwoDownLabel.Click += new System.EventHandler(this.settingPlayerTwoDownLabel_Click);
             // 
             // resumeLabel
             // 
@@ -269,17 +269,14 @@ namespace Pong
             // winningLabel
             // 
             this.winningLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.winningLabel.AutoSize = false;
             this.winningLabel.Cursor = System.Windows.Forms.Cursors.Default;
             this.winningLabel.Location = new System.Drawing.Point(449, 275);
             this.winningLabel.Name = "winningLabel";
-            this.winningLabel.Size = new System.Drawing.Size(107, 13);
+            this.winningLabel.Size = new System.Drawing.Size(450, 100);
             this.winningLabel.TabIndex = 18;
             this.winningLabel.Text = "CONGRATULATION";
+            this.winningLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.winningLabel.Visible = false;
-            this.winningLabel.TextAlign = ContentAlignment.MiddleRight;
-            this.winningLabel.Size = new Size(450,100);
-            
             // 
             // Form1
             // 
@@ -295,8 +292,8 @@ namespace Pong
             this.Controls.Add(this.settingPlayerTwoDownLabel);
             this.Controls.Add(this.settingPlayerOneDownLabel);
             this.Controls.Add(this.settingPlayerOneUpLabel);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.soundMutePictureBox);
+            this.Controls.Add(this.soundPictureBox);
             this.Controls.Add(this.settingEngageLabel);
             this.Controls.Add(this.settingBackLabel);
             this.Controls.Add(this.settingPlayerTwoLabel);
@@ -312,8 +309,8 @@ namespace Pong
             this.Text = "Old School Pong";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundMutePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,8 +327,8 @@ namespace Pong
         private System.Windows.Forms.Label settingPlayerOneLabel;
         private System.Windows.Forms.Label settingPlayerTwoLabel;
         private System.Windows.Forms.Label settingEngageLabel;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox soundPictureBox;
+        private System.Windows.Forms.PictureBox soundMutePictureBox;
         private System.Windows.Forms.Label settingPlayerOneUpLabel;
         private System.Windows.Forms.Label settingPlayerOneDownLabel;
         private System.Windows.Forms.Label settingPlayerTwoUpLabel;

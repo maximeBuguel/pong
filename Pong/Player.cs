@@ -65,7 +65,7 @@ namespace Pong
             }
             
             this.Paddle();
-            //this.paddle.Location = new Point(this.posX, this.posY + move);
+            //this.paddle.Location = new Point(this.posX, this.posY + Move);
 
             
         }
@@ -75,7 +75,7 @@ namespace Pong
             this.Clean();
             this.posY = this.windowSizeY/2 - paddleHeight/2;
             this.Paddle();
-            //this.paddle.Location = new Point(this.posX, this.posY + move);
+            //this.paddle.Location = new Point(this.posX, this.posY + Move);
 
 
         }

@@ -13,71 +13,71 @@ namespace Pong
 {
     class Game
     {
-        const int iaSensitivity = 0;
-        const int pointForWin = 10;
-        const int ballSize = 10;
-        public int windowSizeX { get; set; }
-        public int windowSizeY { get; set; }
-        public Graphics g { get; set; }
-        public int nbPlayer { get; set; }
-        public int scoreP1 { get; set; }
-        public int scoreP2 { get; set; }
-        public Point ballPosition { get; set; }
-        public Player p1 { get; set; }
-        public Player p2 { get; set; }
-        public int xSpeed { get; set; }
-        public int ySpeed { get; set; }
-        public Rectangle ball { get; set; }
-        public Boolean p1UpPressed { get; set; }
-        public Boolean p1DownPressed { get; set; }
-        public Boolean p2UpPressed { get; set; }
-        public Boolean p2DownPressed { get; set; }
-        public Form1 parent { get; set; }
-        public Boolean gameFinished { get; set; }
+        const int IASensitivity = 0;
+        const int PointToWin = 10;
+        const int BallSize = 10;
+        public int WindowSizeX { get; set; }
+        public int WindowSizeY { get; set; }
+        public Graphics GraphicView { get; set; }
+        public int NbPlayer { get; set; }
+        public int ScoreP1 { get; set; }
+        public int ScoreP2 { get; set; }
+        public Point BallPosition { get; set; }
+        public Player PlayerOne { get; set; }
+        public Player PlayerTwo { get; set; }
+        public int XSpeed { get; set; }
+        public int YSpeed { get; set; }
+        public Rectangle Ball { get; set; }
+        public Boolean PlayerOneUpPressed { get; set; }
+        public Boolean PlayerOneDownPressed { get; set; }
+        public Boolean PlayerTwoUpPressed { get; set; }
+        public Boolean PlayerTwoDownPressed { get; set; }
+        public Form1 FormParent { get; set; }
+        public Boolean GameFinished { get; set; }
         public SoundPlayer MyPlayer1 { get; set; }
         public SoundPlayer MyPlayer2 { get; set; }
-        public Boolean gamePaused { get; set; }
+        public Boolean GamePaused { get; set; }
         
         public Game(Graphics g, int nbPlayer, int width, int height, Form1 main)
         {
 
-            this.parent = main;
-            this.gamePaused = false;
-            String path = Directory.GetCurrentDirectory()+"\\Beep1.wav";
-            this.MyPlayer1 = new SoundPlayer(path);
-            String path2 = Directory.GetCurrentDirectory() + "\\Beep2.wav";
-            this.MyPlayer2 = new SoundPlayer(path2);
-            this.gameFinished = false;
-            this.windowSizeX = width;
-            this.windowSizeY = height;
-            this.g = g;
-            this.nbPlayer = nbPlayer;
-            this.scoreP1 = 0;
-            this.scoreP2 = 0;
-            this.ballPosition = new Point(windowSizeX / 2 - ballSize /2 , windowSizeY / 2 - ballSize/2);
+            this.FormParent = main;
+            this.GamePaused = false;
+            this.MyPlayer1 = new SoundPlayer(global::Pong.Properties.Resources.Beep1);
+            this.MyPlayer1.Load();
+            this.MyPlayer2 = new SoundPlayer(global::Pong.Properties.Resources.Beep2);
+            this.MyPlayer2.Load();
+            this.GameFinished = false;
+            this.WindowSizeX = width;
+            this.WindowSizeY = height;
+            this.GraphicView = g;
+            this.NbPlayer = nbPlayer;
+            this.ScoreP1 = 0;
+            this.ScoreP2 = 0;
+            this.BallPosition = new Point(WindowSizeX / 2 - BallSize /2 , WindowSizeY / 2 - BallSize/2);
             Map();
             Score();
-            Ball();
-            this.p1 = new Player(g, true, 1, this.windowSizeX, this.windowSizeY);
+            CreateBall();
+            this.PlayerOne = new Player(g, true, 1, this.WindowSizeX, this.WindowSizeY);
             if (nbPlayer == 2)
             {
-                this.p2 = new Player(g, true, 2, this.windowSizeX, this.windowSizeY);
+                this.PlayerTwo = new Player(g, true, 2, this.WindowSizeX, this.WindowSizeY);
             }
             else
             {
-                this.p2 = new Player(g, false, 2, this.windowSizeX, this.windowSizeY);
+                this.PlayerTwo = new Player(g, false, 2, this.WindowSizeX, this.WindowSizeY);
             }
-            this.xSpeed = 5;
-            this.ySpeed = 5;
+            this.XSpeed = 5;
+            this.YSpeed = 5;
         }
 
-        private void Ball()
+        private void CreateBall()
         {
             Pen pen = new Pen(Color.White, 2);
-            this.ball = new Rectangle(ballPosition.X , ballPosition.Y , ballSize, ballSize);
+            this.Ball = new Rectangle(BallPosition.X , BallPosition.Y , BallSize, BallSize);
             Brush brush = new SolidBrush(Color.White);
-            this.g.DrawRectangle(pen, ball);
-            this.g.FillRectangle(brush, ball);
+            this.GraphicView.DrawRectangle(pen, Ball);
+            this.GraphicView.FillRectangle(brush, Ball);
             pen.Dispose();
         }
 
@@ -86,50 +86,50 @@ namespace Pong
             Pen pen = new Pen(Color.White, 2);
             float[] dashValues = { 10, 10 };
             pen.DashPattern = dashValues;
-            this.g.DrawLine(pen, new Point(windowSizeX / 2, 0), new Point(windowSizeX / 2, windowSizeY));
+            this.GraphicView.DrawLine(pen, new Point(WindowSizeX / 2, 0), new Point(WindowSizeX / 2, WindowSizeY));
             pen.Dispose();
 
         }
 
         private void Score()
         {
-            Font myFont = new Font(this.parent.font.Families[0], 40, FontStyle.Regular);
+            Font myFont = new Font(this.FormParent.Font8Bit.Families[0], 40, FontStyle.Regular);
             Brush myBrush = new SolidBrush(System.Drawing.Color.White);
-            this.g.DrawString(scoreP1.ToString(), myFont, myBrush, (windowSizeX / 2) - windowSizeX / 4, 40);
-            this.g.DrawString(scoreP2.ToString(), myFont, myBrush, (windowSizeX / 2) + windowSizeX / 4 - 40, 40);
+            this.GraphicView.DrawString(ScoreP1.ToString(), myFont, myBrush, (WindowSizeX / 2) - WindowSizeX / 4, 40);
+            this.GraphicView.DrawString(ScoreP2.ToString(), myFont, myBrush, (WindowSizeX / 2) + WindowSizeX / 4 - 40, 40);
         }
 
         public void Refresh()
         {
             Map();
             Score();
-            Ball();
-            p1.refresh();
-            p2.refresh();
+            CreateBall();
+            PlayerOne.refresh();
+            PlayerTwo.refresh();
         }
 
         public void Update()
         {
 
-            move(p1, 1);
-            move(p2, 2);
+            Move(PlayerOne, 1);
+            Move(PlayerTwo, 2);
             MoveBall();
-            if (!this.gameFinished)
+            if (!this.GameFinished)
             {
                 Refresh();
             }
 
         }
 
-        public void move(Player p, int player)
+        public void Move(Player p, int player)
         {
             if (p.isHuman == false)
             {
-                if (ball.Y + ballSize / 2 < p.posY + Player.paddleHeight / 2 + iaSensitivity)
+                if (Ball.Y + BallSize / 2 < p.posY + Player.paddleHeight / 2 + IASensitivity)
                 {
                     p.move(Dirrection.Up);
                 }
-                if (ball.Y + ballSize / 2 > p.posY + Player.paddleHeight / 2 + iaSensitivity)
+                if (Ball.Y + BallSize / 2 > p.posY + Player.paddleHeight / 2 + IASensitivity)
                 {
                     p.move(Dirrection.Down);
                 }
@@ -138,22 +138,22 @@ namespace Pong
             {
                 if (player == 1)
                 {
-                    if (p1UpPressed == true)
+                    if (PlayerOneUpPressed == true)
                     {
                         p.move(Dirrection.Up);
                     }
-                    if (p1DownPressed == true)
+                    if (PlayerOneDownPressed == true)
                     {
                         p.move(Dirrection.Down);
                     }
                 }
                 if (player == 2)
                 {
-                    if (p2UpPressed == true)
+                    if (PlayerTwoUpPressed == true)
                     {
                         p.move(Dirrection.Up);
                     }
-                    if (p2DownPressed == true)
+                    if (PlayerTwoDownPressed == true)
                     {
                         p.move(Dirrection.Down);
                     }
@@ -167,161 +167,161 @@ namespace Pong
             if (!point)
             {
 
-                if (this.ball.Y + ballSize >= windowSizeY || this.ball.Y <= 0)
+                if (this.Ball.Y + BallSize >= WindowSizeY || this.Ball.Y <= 0)
                 {
-                    if (this.parent.Sound == true)
+                    if (this.FormParent.Sound == true)
                     {
                         this.MyPlayer1.Play();
                     }
-                    this.ySpeed -= 2 * this.ySpeed;
+                    this.YSpeed -= 2 * this.YSpeed;
                 }
 
-                cleanBall();
-                this.ballPosition = new Point(this.ballPosition.X + xSpeed, this.ballPosition.Y + ySpeed);
+                CleanBall();
+                this.BallPosition = new Point(this.BallPosition.X + XSpeed, this.BallPosition.Y + YSpeed);
             }
             else
             {
-                if ((this.ballPosition.X < this.windowSizeX / 2) && ballIntersecPlayer(p1))
+                if ((this.BallPosition.X < this.WindowSizeX / 2) && ballIntersecPlayer(PlayerOne))
                 {
-                    if (this.parent.Sound == true)
+                    if (this.FormParent.Sound == true)
                     {
                         this.MyPlayer2.Play();
                     }
-                    this.xSpeed -= 2 * this.xSpeed;
-                    int posX = this.ballPosition.X + xSpeed;
-                    if (this.ballPosition.X + xSpeed < p1.posX+ Player.paddleWidth) {
-                        posX = p1.posX + Player.paddleWidth;
+                    this.XSpeed -= 2 * this.XSpeed;
+                    int posX = this.BallPosition.X + XSpeed;
+                    if (this.BallPosition.X + XSpeed < PlayerOne.posX+ Player.paddleWidth) {
+                        posX = PlayerOne.posX + Player.paddleWidth;
                     }
-                    cleanBall();
-                    this.ballPosition = new Point(posX, this.ballPosition.Y + ySpeed);
-                    this.increaseAngle(p1);
+                    CleanBall();
+                    this.BallPosition = new Point(posX, this.BallPosition.Y + YSpeed);
+                    this.IncreaseAngle(PlayerOne);
                 }
-                else if (this.ballPosition.X > this.windowSizeX / 2 && ballIntersecPlayer(p2))
+                else if (this.BallPosition.X > this.WindowSizeX / 2 && ballIntersecPlayer(PlayerTwo))
                 {
-                    if (this.parent.Sound == true)
+                    if (this.FormParent.Sound == true)
                     {
                         this.MyPlayer2.Play();
                     }
-                    this.xSpeed -= 2 * this.xSpeed;
+                    this.XSpeed -= 2 * this.XSpeed;
                     
-                    int posX = this.ballPosition.X + xSpeed;
-                    if (this.ballPosition.X + xSpeed + ballSize > p2.posX)
+                    int posX = this.BallPosition.X + XSpeed;
+                    if (this.BallPosition.X + XSpeed + BallSize > PlayerTwo.posX)
                     {
-                        posX = p2.posX - ballSize;
+                        posX = PlayerTwo.posX - BallSize;
                     }
-                    cleanBall();
-                    this.ballPosition = new Point(posX, this.ballPosition.Y + ySpeed);
-                    this.increaseAngle(p2);
+                    CleanBall();
+                    this.BallPosition = new Point(posX, this.BallPosition.Y + YSpeed);
+                    this.IncreaseAngle(PlayerTwo);
                 }
                 else
                 {
-                    incScore();
+                    IncScore();
                 }
             }
 
         }
 
-        private void increaseAngle(Player p)
+        private void IncreaseAngle(Player p)
         {
             int playerCenter = p.posY + Player.paddleHeight/2;
-            int ballCenter = ballPosition.Y + ballSize/2;
+            int ballCenter = BallPosition.Y + BallSize/2;
             int distCenterToCenter = Math.Abs(playerCenter - ballCenter);
             if (distCenterToCenter > Player.paddleHeight / 4) {
-                this.incY(2);
-                this.incX(3);
+                this.IncY(2);
+                this.IncX(3);
             }
             
             
             
         }
 
-        public void incScore()
+        public void IncScore()
         {
-            this.cleanBall();
-            if (this.ballPosition.X < this.windowSizeX / 2)
+            this.CleanBall();
+            if (this.BallPosition.X < this.WindowSizeX / 2)
             {
-                scoreP2 += 1;
-                this.xSpeed = -5;
+                ScoreP2 += 1;
+                this.XSpeed = -5;
             }
             else
             {
-                scoreP1 += 1;
-                this.xSpeed = 5;
+                ScoreP1 += 1;
+                this.XSpeed = 5;
 
             }
-            if (scoreP1 == pointForWin)
+            if (ScoreP1 == PointToWin)
             {
-                this.gameFinished = true;
+                this.GameFinished = true;
                 this.cleanScore();
-                this.p1.Clean();
-                this.p2.Clean();
-                parent.ShowWinningScreen(1);
+                this.PlayerOne.Clean();
+                this.PlayerTwo.Clean();
+                FormParent.ShowWinningScreen(1);
             }
-            else if (scoreP2 == pointForWin)
+            else if (ScoreP2 == PointToWin)
             {
-                this.gameFinished = true;
+                this.GameFinished = true;
                 this.cleanScore();
-                this.p1.Clean();
-                this.p2.Clean();
-                parent.ShowWinningScreen(2);
+                this.PlayerOne.Clean();
+                this.PlayerTwo.Clean();
+                FormParent.ShowWinningScreen(2);
             }
             else
             {
 
                 this.cleanScore();
-                this.ySpeed = 5;
-                this.ballPosition = new Point(windowSizeX / 2 - ballSize / 2, windowSizeY / 2 - ballSize / 2);
-                this.p1.ResetPos();
-                this.p2.ResetPos();
-                this.p1UpPressed = false;
-                this.p1DownPressed = false;
-                this.p2UpPressed = false;
-                this.p2DownPressed = false;
-                this.pauseGame();
+                this.YSpeed = 5;
+                this.BallPosition = new Point(WindowSizeX / 2 - BallSize / 2, WindowSizeY / 2 - BallSize / 2);
+                this.PlayerOne.ResetPos();
+                this.PlayerTwo.ResetPos();
+                this.PlayerOneUpPressed = false;
+                this.PlayerOneDownPressed = false;
+                this.PlayerTwoUpPressed = false;
+                this.PlayerTwoDownPressed = false;
+                this.PauseGame();
             }
         }
 
-        public void pauseGame() {
-            this.gamePaused = true;
-            this.parent.gameRunning = false;
+        public void PauseGame() {
+            this.GamePaused = true;
+            this.FormParent.GameRunning = false;
 
         }
 
-        public void unPauseGame()
+        public void UnPauseGame()
         {
-            this.gamePaused = false;
-            this.parent.gameRunning = true;
+            this.GamePaused = false;
+            this.FormParent.GameRunning = true;
         }
 
-        public void cleanBall()
+        public void CleanBall()
         {
             Pen pen = new Pen(Color.Black, 2);
-            Rectangle clean = new Rectangle(ballPosition.X , ballPosition.Y , ballSize, ballSize);
+            Rectangle clean = new Rectangle(BallPosition.X , BallPosition.Y , BallSize, BallSize);
             Brush brush = new SolidBrush(Color.Black);
-            this.g.DrawRectangle(pen, clean);
-            this.g.FillRectangle(brush, clean);
+            this.GraphicView.DrawRectangle(pen, clean);
+            this.GraphicView.FillRectangle(brush, clean);
             pen.Dispose();
         }
 
         public void cleanScore()
         {
             Pen pen = new Pen(Color.Black, 2);
-            Rectangle clean = new Rectangle(0, 0, this.windowSizeX, this.windowSizeY);
+            Rectangle clean = new Rectangle(0, 0, this.WindowSizeX, this.WindowSizeY);
             Brush brush = new SolidBrush(Color.Black);
-            this.g.DrawRectangle(pen, clean);
-            this.g.FillRectangle(brush, clean);
+            this.GraphicView.DrawRectangle(pen, clean);
+            this.GraphicView.FillRectangle(brush, clean);
             pen.Dispose();
         }
 
         public Boolean pointMarked()
         {
             Boolean marked = false;
-            if (this.ballPosition.X <= (20 + Player.paddleWidth))
+            if (this.BallPosition.X <= (20 + Player.paddleWidth))
             {
                 marked = true;
             }
 
-            if (this.ballPosition.X + ballSize >= this.windowSizeX - (20 + Player.paddleWidth))
+            if (this.BallPosition.X + BallSize >= this.WindowSizeX - (20 + Player.paddleWidth))
             {
                 marked = true;
             }
@@ -331,8 +331,8 @@ namespace Pong
         public Boolean ballIntersecPlayer(Player p)
         {
             Boolean intersect = false;
-            Boolean up = this.ballPosition.Y + ballSize >= p.posY;
-            Boolean down = this.ballPosition.Y <= p.posY + Player.paddleHeight;
+            Boolean up = this.BallPosition.Y + BallSize >= p.posY;
+            Boolean down = this.BallPosition.Y <= p.posY + Player.paddleHeight;
             if (up && down)
             {
                 intersect = true;
@@ -343,55 +343,55 @@ namespace Pong
 
         public void incSpeed()
         {
-            this.incX(1);
-            this.incY(1);
+            this.IncX(1);
+            this.IncY(1);
         }
 
-        private void incX(int fact)
+        private void IncX(int fact)
         {
-            if (this.xSpeed > 0)
+            if (this.XSpeed > 0)
             {
-                this.xSpeed += 1*fact;
+                this.XSpeed += 1*fact;
             }
-            if (this.xSpeed < 0)
+            if (this.XSpeed < 0)
             {
-                this.xSpeed -= 1 * fact;
+                this.XSpeed -= 1 * fact;
             }
 
         }
 
-        private void incY(int fact) {
-           if (this.ySpeed > 0)
+        private void IncY(int fact) {
+           if (this.YSpeed > 0)
             {
-                this.ySpeed += 1*fact;
+                this.YSpeed += 1*fact;
             }
-            if (this.ySpeed < 0)
+            if (this.YSpeed < 0)
             {
-                this.ySpeed -= 1*fact;
+                this.YSpeed -= 1*fact;
             }
         }
-        private void decX(int fact)
+        private void DecX(int fact)
         {
-            if (this.xSpeed > 0)
+            if (this.XSpeed > 0)
             {
-                this.xSpeed -= 1*fact;
+                this.XSpeed -= 1*fact;
             }
-            if (this.xSpeed < 0)
+            if (this.XSpeed < 0)
             {
-                this.xSpeed += 1*fact;
+                this.XSpeed += 1*fact;
             }
 
         }
 
         private void decY(int fact)
         {
-            if (this.ySpeed > 0)
+            if (this.YSpeed > 0)
             {
-                this.ySpeed -= 1*fact;
+                this.YSpeed -= 1*fact;
             }
-            if (this.ySpeed < 0)
+            if (this.YSpeed < 0)
             {
-                this.ySpeed += 1*fact;
+                this.YSpeed += 1*fact;
             }
         }
     }
