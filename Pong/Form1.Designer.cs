@@ -97,10 +97,10 @@ namespace Pong
             this.twoPlayerLabel.Location = new System.Drawing.Point(36, 81);
             this.twoPlayerLabel.Name = "twoPlayerLabel";
             this.twoPlayerLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.twoPlayerLabel.Size = new System.Drawing.Size(78, 13);
+            this.twoPlayerLabel.Size = new System.Drawing.Size(85, 13);
             this.twoPlayerLabel.TabIndex = 1;
             this.twoPlayerLabel.TabStop = true;
-            this.twoPlayerLabel.Text = "TWO PLAYER";
+            this.twoPlayerLabel.Text = "TWO PLAYERS";
             this.twoPlayerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.twoPlayerLabel.Click += new System.EventHandler(this.twoPlayerLabel_Click);
             // 

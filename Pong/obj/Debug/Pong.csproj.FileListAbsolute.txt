@@ -7,3 +7,4 @@ C:\Users\isen\documents\visual studio 2013\Projects\Pong\Pong\bin\Debug\Pong.pdb
 C:\Users\isen\documents\visual studio 2013\Projects\Pong\Pong\obj\Debug\Pong.Properties.Resources.resources
 C:\Users\isen\documents\visual studio 2013\Projects\Pong\Pong\obj\Debug\Pong.exe
 C:\Users\isen\documents\visual studio 2013\Projects\Pong\Pong\obj\Debug\Pong.pdb
+C:\Users\isen\documents\visual studio 2013\Projects\Pong\Pong\obj\Debug\Pong.csprojResolveAssemblyReference.cache
